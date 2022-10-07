@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 export default function WeatherForecastDay(props) {
   function maxTemperature() {
@@ -23,6 +22,7 @@ export default function WeatherForecastDay(props) {
       <div>
         <img
           className="WeatherForecast-icon"
+          alt="description"
           src={`http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`}
         />{" "}
       </div>
