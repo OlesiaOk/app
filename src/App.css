@@ -53,3 +53,9 @@ li {
 .link {
   text-align: center;
 }
+.col {
+  width: 70px;
+}
+.WeatherForecast-icon {
+  width: 70px;
+}

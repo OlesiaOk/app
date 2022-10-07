@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 
 import WeatherInfo from "./Weatherinfo";
+import WeatherForecast from "./WeatherForecast";
 import "./App.css";
 export default function Weather(props) {
-  const [city, seyCity] = useState(props.defaultCity);
+  const [city, setCity] = useState(props.defaultCity);
   const [weatherDate, setWeatherDate] = useState({ ready: false });
   function handleResponse(response) {
     setWeatherDate({
       ready: true,
+      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
@@ -32,7 +34,7 @@ export default function Weather(props) {
   }
 
   function handleCityChange(event) {
-    seyCity(event.target.value);
+    setCity(event.target.value);
   }
 
   if (weatherDate.ready) {
@@ -54,20 +56,17 @@ export default function Weather(props) {
                     onChange={handleCityChange}
                   />
                 </div>
-                <div className="col-2">
-                  <button className="btn btn-outline-secondary" type="submit">
+                <div className="col-4">
+                  <button className="btn btn-outline-dark" type="submit">
                     Search
                   </button>
                 </div>
-                <div className="col-2">
-                  <button className="btn btn-success ">
-                    Current location{" "}
-                  </button>
-                </div>
+
                 <div className="col"></div>
               </div>
             </form>
           </div>
+          <WeatherForecast coordinates={weatherDate.coordinates} />
         </div>
         <p className="link mt-5">
           <small>
