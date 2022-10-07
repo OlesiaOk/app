@@ -68,7 +68,7 @@ export default function Weather(props) {
           </div>
           <WeatherForecast coordinates={weatherDate.coordinates} />
         </div>
-        <p className="link mt-5">
+        <p className="link mt-3">
           <small>
             <a
               href="https://github.com/OlesiaOk/weatherapp"
